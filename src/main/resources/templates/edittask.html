@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<title>Fourthingsplus</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="../public/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet"/>
+</head>
+
+<body>
+<header>
+    <a href="index.html" th:href="@{/}">
+        <img src="../public/images/fourthingsplus.png" th:src="@{/images/fourthingsplus.png}" width="35%"/>
+    </a>
+</header>
+
+<form class="generic-form" method="post">
+    <input type="text" name="taskname" th:value="${task.name}"/>
+    <button type="submit" name="taskId" th:value="${task.taskId}" formaction="/updatetask">Update</button>
+</form>
+
+</body>
+</html>
