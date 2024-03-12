@@ -74,4 +74,4 @@ Så er databasen klar til brug. Genererer evt. et ERD for at tjekke at alt er i 
 
 Det skulle gerne se således ud:
 
-![ERD](./documentation/fourthingsplus_erd.png)
+![ERD](./docs/fourthingsplus_erd.png)
