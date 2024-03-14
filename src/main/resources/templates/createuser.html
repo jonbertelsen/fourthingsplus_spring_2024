@@ -11,11 +11,11 @@
 <body>
 <header>
     <a href="index.html" th:href="@{/}">
-        <img alt="logo" src="../public/images/fourthingsplus.png" th:src="@{/images/fourthingsplus.png}" width="35%"/>
+        <img alt="logo" src="../public/images/fourthingsplus.png" th:src="@{/images/fourthingsplus.png}"/>
     </a>
 </header>
 
-<form class="login-form" method="post">
+<form class="generic-form" method="post">
     <input type="text" name="username" placeholder="Enter your username"/>
     <input type="password" name="password1" placeholder="Enter your password"/>
     <input type="password" name="password2" placeholder="Enter your password again"/>
@@ -24,11 +24,9 @@
     <div><p th:text="${message}"></p></div>
 </form>
 
-<div th:if="${session.currentUser != null}">
-    <span th:text="${session.currentUser.username}"></span> |
-    <a href="index.html" th:href="@{/logout}">Logout</a>
+<div>
+    <a th:if="${session.currentUser != null}" href="index.html" th:href="@{/logout}">Logout</a>
 </div>
-<p><a href="createuser.html" th:href="@{/createuser}">Create user</a></p>
 
 </body>
 </html>
