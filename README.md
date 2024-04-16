@@ -14,13 +14,9 @@ Dernæst åbner du en query editor i PgAdmin, kopierer dette script ind og køre
 
 ```sql
 -- Database: fourthingsplus
-
-CREATE TABLE public.task (
-    task_id integer NOT NULL,
-    name character varying NOT NULL,
-    done boolean DEFAULT false NOT NULL,
-    user_id integer NOT NULL
-);
+--
+-- PostgreSQL database dump
+--
 
 CREATE SEQUENCE public.task_task_id_seq
     AS integer
@@ -30,11 +26,20 @@ CREATE SEQUENCE public.task_task_id_seq
     NO MAXVALUE
     CACHE 1;
 
-CREATE TABLE public.users (
-    user_id integer NOT NULL,
-    user_name character varying(50) NOT NULL,
-    password character varying(50)
+ALTER SEQUENCE public.task_task_id_seq OWNER TO postgres;
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+CREATE TABLE public.task (
+                             task_id integer DEFAULT nextval('public.task_task_id_seq'::regclass) NOT NULL,
+                             name character varying NOT NULL,
+                             done boolean DEFAULT false NOT NULL,
+                             user_id integer NOT NULL
 );
+
+ALTER TABLE public.task OWNER TO postgres;
 
 CREATE SEQUENCE public.users_user_id_seq
     AS integer
@@ -44,14 +49,21 @@ CREATE SEQUENCE public.users_user_id_seq
     NO MAXVALUE
     CACHE 1;
 
+ALTER SEQUENCE public.users_user_id_seq OWNER TO postgres;
 
-ALTER TABLE ONLY public.task ALTER COLUMN task_id SET DEFAULT nextval('public.task_task_id_seq'::regclass);
+CREATE TABLE public.users (
+                              user_id integer DEFAULT nextval('public.users_user_id_seq'::regclass) NOT NULL,
+                              username character varying(50) NOT NULL,
+                              password character varying(50),
+                              role character varying(20) DEFAULT 'user'::character varying NOT NULL
+);
 
-ALTER TABLE ONLY public.users ALTER COLUMN user_id SET DEFAULT nextval('public.users_user_id_seq'::regclass);
+ALTER TABLE public.users OWNER TO postgres;
+
 
 INSERT INTO public.task VALUES (1, 'Se Jons videoer', false, 1);
 
-INSERT INTO public.users VALUES (1, 'jon', '1234');
+INSERT INTO public.users VALUES (1, 'jon', '1234', 'user');
 
 SELECT pg_catalog.setval('public.task_task_id_seq', 1, true);
 
@@ -61,7 +73,7 @@ ALTER TABLE ONLY public.task
     ADD CONSTRAINT task_pkey PRIMARY KEY (task_id);
 
 ALTER TABLE ONLY public.users
-    ADD CONSTRAINT user_name_unique UNIQUE (user_name);
+    ADD CONSTRAINT user_name_unique UNIQUE (username);
 
 ALTER TABLE ONLY public.users
     ADD CONSTRAINT users_pkey PRIMARY KEY (user_id);
