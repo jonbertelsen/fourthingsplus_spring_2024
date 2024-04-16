@@ -10,7 +10,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-  /*  border: 1px solid red; */
+    border: 1px solid red;
 }
 
 .page {
@@ -19,7 +19,7 @@ body {
     align-items: center;
     max-width: 800px;
     padding:8px;
-/*    border: 1px solid blue;  */
+   border: 1px solid blue;
     min-height: 600px;
 }
 
@@ -46,22 +46,36 @@ h1 {
 /* General form styles */
 
 .generic-form {
-    max-width: 400px;
     display: flex;
     flex-direction: column;
     gap: 10px;
+    border: 1px solid cyan;
 }
 
-.generic-form button {
+.btn {
     padding: 10px;
     font-size: 1.2rem;
     border-radius: 5px;
+}
+
+.btn-ok {
     background-color: darkgreen;
     color: white;
 }
 
-.generic-form button:hover {
+.btn-ok:hover {
     background-color: lightgreen;
+    color: white;
+}
+
+.btn-danger {
+    background-color: red;
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color:hotpink;
+    color: white;
 }
 
 .generic-form input[type=text], .generic-form input[type=password] {

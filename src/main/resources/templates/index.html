@@ -20,8 +20,14 @@
     <form class="generic-form" method="post">
         <input type="text" name="username" placeholder="Enter your username"/>
         <input type="password" name="password" placeholder="Enter your password"/>
-        <button type="submit" formaction="/login">Get access to my mind</button>
+        <button class="btn btn-ok" type="submit" formaction="/login">Get access to my mind</button>
         <div><p class="error" th:unless="${#strings.isEmpty(message)}" th:text="${message}"></p></div>
+    </form>
+    <!-- Only in dev mode - remove before deployment -->
+    <form method="post">
+        <input type="hidden" name="username" value="jon"/>
+        <input type="hidden" name="password" value="1234"/>
+        <button type="submit" formaction="/login">Get access to my mind</button>
     </form>
 
     <div>
@@ -30,7 +36,6 @@
         <a href="createuser.html" th:href="@{/createuser}">Create user</a>
     </div>
 
-    <p></p>
 </div>
 </body>
 </html>
