@@ -10,7 +10,6 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: 1px solid red;
 }
 
 .page {
@@ -19,7 +18,6 @@ body {
     align-items: center;
     max-width: 800px;
     padding:8px;
-   border: 1px solid blue;
     min-height: 600px;
 }
 
@@ -49,7 +47,6 @@ h1 {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    border: 1px solid cyan;
 }
 
 .btn {

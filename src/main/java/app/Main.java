@@ -6,6 +6,7 @@ import app.controllers.UserController;
 import app.persistence.ConnectionPool;
 import io.javalin.Javalin;
 import io.javalin.rendering.template.JavalinThymeleaf;
+import org.eclipse.jetty.server.session.SessionHandler;
 
 public class Main
 {
@@ -22,6 +23,9 @@ public class Main
 
         Javalin app = Javalin.create(config -> {
             config.staticFiles.add("/public");
+            SessionHandler sessionHandler = new SessionHandler();
+            sessionHandler.setUsingCookies(true);
+            config.jetty.modifyServer(server -> server.setSessionIdManager(sessionHandler.getSessionIdManager()));
             config.fileRenderer(new JavalinThymeleaf(ThymeleafConfig.templateEngine()));
         }).start(7070);
 
