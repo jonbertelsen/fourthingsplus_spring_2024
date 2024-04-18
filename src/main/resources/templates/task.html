@@ -72,6 +72,7 @@
     <div><p class="error" th:unless="${#strings.isEmpty(message)}" th:text="${message}"></p></div>
 
     <p th:if="${session.currentUser != null}">
+        <a href="https://showcode.dk">Home</a> |
         <a href="index.html" th:href="@{/logout}">Logout</a>
     </p>
 </div>

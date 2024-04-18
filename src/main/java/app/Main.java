@@ -1,5 +1,6 @@
 package app;
 
+import app.config.SessionConfig;
 import app.config.ThymeleafConfig;
 import app.controllers.TaskController;
 import app.controllers.UserController;
@@ -23,9 +24,7 @@ public class Main
 
         Javalin app = Javalin.create(config -> {
             config.staticFiles.add("/public");
-            SessionHandler sessionHandler = new SessionHandler();
-            sessionHandler.setUsingCookies(true);
-            config.jetty.modifyServer(server -> server.setSessionIdManager(sessionHandler.getSessionIdManager()));
+            config.jetty.modifyServletContextHandler(handler ->  handler.setSessionHandler(SessionConfig.sessionConfig()));
             config.fileRenderer(new JavalinThymeleaf(ThymeleafConfig.templateEngine()));
         }).start(7070);
 

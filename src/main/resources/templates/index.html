@@ -30,7 +30,8 @@
         <button type="submit" formaction="/login">Get access to my mind</button>
     </form>
 
-    <div>
+    <div style="margin-top:20px;">
+        <a href="https://showcode.dk">Home</a> |
         <a th:if="${session.currentUser != null}" href="index.html" th:href="@{/logout}">Logout</a>
          <span  th:if="${session.currentUser != null}"> | </span>
         <a href="createuser.html" th:href="@{/createuser}">Create user</a>
